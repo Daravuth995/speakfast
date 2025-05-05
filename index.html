@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>English Speaking Course</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Khmer:wght@400;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- ScrollReveal -->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', 'Noto Sans Khmer', sans-serif;
+      background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      text-align: center;
+      color: white;
+      padding: 30px 15px;
+      position: relative;
+    }
+
+    /* Floating Background Elements */
+    .floating-elements {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .floating-elements .circle {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      animation: float 15s infinite linear;
+    }
+
+    .floating-elements .circle:nth-child(1) {
+      width: 100px;
+      height: 100px;
+      top: 20%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-elements .circle:nth-child(2) {
+      width: 150px;
+      height: 150px;
+      top: 60%;
+      left: 70%;
+      animation-delay: 3s;
+    }
+
+    .floating-elements .circle:nth-child(3) {
+      width: 200px;
+      height: 200px;
+      top: 30%;
+      left: 50%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-50px) rotate(180deg); }
+      100% { transform: translateY(0) rotate(360deg); }
+    }
+
+    /* Main Content */
+    main {
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Headline */
+    h1.animated-headline {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      transition: all 0.5s ease;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      animation: fadeInSlide 1.5s ease-out forwards;
+    }
+
+    h1.animated-headline:hover {
+      color: #fff;
+      text-shadow: 0 0 10px rgba(255,0,255,0.7), 
+                   0 0 20px rgba(0,255,255,0.7), 
+                   0 0 30px rgba(255,255,0,0.7);
+      transform: scale(1.02);
+    }
+
+    @keyframes fadeInSlide {
+      0% { opacity: 0; transform: translateY(-50px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Subheadline */
+    .subheadline {
+      margin-bottom: 40px;
+      animation: fadeInSub 2s ease-in forwards;
+      opacity: 0;
+    }
+
+    .subheadline ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .subheadline-item {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 10px 20px;
+      border-radius: 10px;
+      animation: glowItem 4s infinite alternate;
+      transition: all 0.3s ease;
+    }
+
+    .subheadline-item:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-3px);
+    }
+
+    @keyframes fadeInSub {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes glowItem {
+      0% { box-shadow: 0 0 5px rgba(255,255,255,0.2); }
+      100% { box-shadow: 0 0 15px rgba(255,255,255,0.5); }
+    }
+
+    /* Buttons */
+    .register-btn {
+      padding: 15px 35px;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease-in-out;
+      animation: pulse 2s infinite;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 10px 0;
+    }
+
+    .register-btn:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 0 0px rgba(255,255,255,0.4); }
+      50% { box-shadow: 0 0 20px rgba(255,255,255,0.8); }
+      100% { box-shadow: 0 0 0px rgba(255,255,255,0.4); }
+    }
+
+    /* Telegram Username Section */
+    .telegram-username-section {
+      margin: 20px 0;
+      padding: 15px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      max-width: 500px;
+      width: 90%;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .telegram-username-section p {
+      margin-bottom: 10px;
+      font-size: 1rem;
+    }
+
+    .copy-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    #telegramUsername {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 10px 15px;
+      border-radius: 5px;
+      font-family: monospace;
+      font-size: 1.1rem;
+      user-select: all;
+    }
+
+    .copy-btn {
+      padding: 10px 15px;
+      background: linear-gradient(45deg, #4facfe, #00f2fe);
+      border: none;
+      border-radius: 5px;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.9rem;
+    }
+
+    .copy-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .copy-btn i {
+      font-size: 1rem;
+    }
+
+    .copy-message {
+      color: #4facfe;
+      font-size: 0.9rem;
+      transition: all 0.3s ease;
+      min-width: 60px;
+      height: 20px;
+      display: inline-block;
+    }
+
+    /* Testimonial Section */
+    .testimonial {
+      margin-top: 50px;
+      padding: 30px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      animation: fadeInTestimonial 1.5s ease-out forwards;
+    }
+
+    .testimonial-heading {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 20px;
+      animation: slideIn 1s ease-out forwards;
+    }
+
+    .testimonial-content {
+      font-size: 1.2rem;
+      color: #ddd;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-btn {
+      padding: 15px 35px;
+      background: linear-gradient(45deg, #ff6ec4, #ffaf7b);
+      border: none;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2rem;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: all 0.3s ease-in-out;
+      animation: pulse 2s infinite;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .testimonial-btn:hover {
+      transform: scale(1.05) translateY(-3px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fadeInTestimonial {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    /* FAQ Section */
+    .faq-section {
+      margin: 40px 0;
+      max-width: 800px;
+      width: 90%;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .faq-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+
+    .faq-container {
+      margin-top: 20px;
+    }
+
+    .faq-item {
+      margin-bottom: 10px;
+      border-radius: 10px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .faq-question {
+      width: 100%;
+      padding: 15px 20px;
+      text-align: left;
+      background: transparent;
+      border: none;
+      color: white;
+      font-family: inherit;
+      font-size: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+
+    .faq-question i {
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question i.rotate {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      padding: 0 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease, padding 0.3s ease;
+    }
+
+    .faq-answer.active {
+      padding: 0 20px 20px;
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      margin-top: 10px;
+    }
+
+    /* Chat Button */
+    .chat-btn {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, #ff6ec4, #7873f5);
+      color: white;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.1) rotate(10deg);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Countdown Section */
+    .countdown-section {
+      margin: 40px 0;
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    .countdown-section h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+    }
+
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    .countdown-box {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 15px;
+      border-radius: 10px;
+      min-width: 80px;
+      transition: all 0.3s ease;
+    }
+
+    .countdown-box:hover {
+      transform: translateY(-5px);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    .countdown-box span {
+      font-size: 2rem;
+      font-weight: bold;
+      display: block;
+    }
+
+    .countdown-box small {
+      font-size: 0.8rem;
+      opacity: 0.8;
+    }
+
+    /* Loader */
+    .loader-wrapper {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, #3a1c71, #d76d77, #ffaf7b);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+
+    .loader {
+      border: 5px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 5px solid white;
+      width: 50px;
+      height: 50px;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* Responsive Design */
+    @media screen and (max-width: 768px) {
+      h1.animated-headline {
+        font-size: 2rem;
+      }
+
+      .subheadline-item {
+        font-size: 1rem;
+        padding: 8px 15px;
+      }
+
+      .register-btn, .testimonial-btn {
+        font-size: 1rem;
+        padding: 12px 25px;
+      }
+
+      .testimonial-heading {
+        font-size: 1.5rem;
+      }
+
+      .testimonial-content {
+        font-size: 1rem;
+      }
+
+      .countdown-box {
+        min-width: 60px;
+        padding: 10px;
+      }
+
+      .countdown-box span {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media screen and (max-width: 480px) {
+      h1.animated-headline {
+        font-size: 1.8rem;
+      }
+
+      .copy-container {
+        flex-direction: column;
+      }
+
+      .faq-question {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating background elements -->
+  <div class="floating-elements">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+  </div>
+
+  <!-- Loading animation -->
+  <div class="loader-wrapper">
+    <div class="loader"></div>
+  </div>
+
+  <main>
+    <h1 class="animated-headline">វគ្គពង្រឹងការនិយាយអង់គ្លេស! រយៈពេលខ្លី! 30ថ្ងៃ!</h1>
+
+    <div class="subheadline">
+      <ul>
+        <li class="subheadline-item">ពង្រឹងសមត្ថភាពទំនាក់ទំនង</li>
+        <li class="subheadline-item">មូលដ្ឋានគ្រិះនៃការបញ្ចេញសម្លេងត្រូវតាមស្តង់ដា</li>
+        <li class="subheadline-item">តិចនិចក្នុងការនិយាយ សន្ទនា ឲ្យមានភាពទាក់ទាញ</li>
+      </ul>
+    </div>
+
+    <a href="https://t.me/alita995" class="register-btn" target="_blank" id="registerBtn">
+      <i class="fab fa-telegram"></i> ចុចត្រង់នេះដើម្បីចុះឈ្មោះ Telegram
+    </a>
+
+    <!-- Copyable Telegram Username Section -->
+    <div class="telegram-username-section">
+      <p>សម្រាប់ពត៌មានបន្ថែម:</p>
+      <div class="copy-container">
+        <span id="telegramUsername">@alita995</span>
+        <button class="copy-btn" id="copyBtn">
+          <i class="far fa-copy"></i> Copy
+        </button>
+        <span class="copy-message" id="copyMessage"></span>
+      </div>
+    </div>
+
+    <!-- Countdown Timer Section -->
+    <section class="countdown-section">
+      <h3>Limited Time Offer!</h3>
+      <div class="countdown-container">
+        <div class="countdown-box">
+          <span id="days">00</span>
+          <small>Days</small>
+        </div>
+        <div class="countdown-box">
+          <span id="hours">00</span>
+          <small>Hours</small>
+        </div>
+        <div class="countdown-box">
+          <span id="minutes">00</span>
+          <small>Minutes</small>
+        </div>
+        <div class="countdown-box">
+          <span id="seconds">00</span>
+          <small>Seconds</small>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial Section -->
+    <section class="testimonial">
+      <h2 class="testimonial-heading">រួចរាល់ក្នុងការផ្លាស់ប្តូរការនិយាយរបស់អ្នករឺនៅ?</h2>
+      <div class="testimonial-content">
+        <p>Join our course and transform your English-speaking skills in just 30 days!</p>
+        <a href="https://t.me/alita995" class="testimonial-btn" target="_blank">
+          <i class="fas fa-user-plus"></i> Join Now
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+      <h2>Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>តើវគ្គសិក្សានេះមានរយៈពេលប៉ុន្មាន?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>វគ្គសិក្សានេះមានរយៈពេល 30ថ្ងៃ ដោយមានមេរៀនថ្មីៗរាល់ថ្ងៃ។</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-question">
+            <span>តើខ្ញុំត្រូវការចំណេះដឹងអ្វីខ្លះមុនពេលចូលរួម?</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-answer">
+            <p>អ្នកគ្រាន់តែត្រូវចេះអក្សរអង់គ្លេស និងមានគោលដៅច្បាស់លាស់ក្នុងការពង្រឹងសមត្ថភាពនិយាយ។</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Chat Button -->
+  <button class="chat-btn">
+    <i class="fas fa-comments"></i>
+  </button>
+
+  <script>
+    // JavaScript for enhanced functionality
+    document.addEventListener('DOMContentLoaded', function() {
+      // Remove loader when page loads
+      setTimeout(() => {
+        document.querySelector('.loader-wrapper').style.opacity = '0';
+        setTimeout(() => {
+          document.querySelector('.loader-wrapper').style.display = 'none';
+        }, 500);
+      }, 1000);
+
+      // Initialize ScrollReveal
+      ScrollReveal().reveal('.animated-headline', { 
+        delay: 300,
+        duration: 1000,
+        distance: '50px',
+        origin: 'top'
+      });
+      
+      ScrollReveal().reveal('.subheadline-item', { 
+        delay: 500,
+        interval: 200,
+        duration: 1000,
+        distance: '30px',
+        origin: 'bottom'
+      });
+
+      // Countdown Timer
+      const countdownDate = new Date();
+      countdownDate.setDate(countdownDate.getDate() + 7); // 7 days from now
+
+      const countdown = setInterval(() => {
+        const now = new Date().getTime();
+        const distance = countdownDate - now;
+
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        document.getElementById('days').textContent = days.toString().padStart(2, '0');
+        document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+        document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+        document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+
+        if (distance < 0) {
+          clearInterval(countdown);
+          document.querySelector('.countdown-section').innerHTML = '<h3>Offer Expired!</h3>';
+        }
+      }, 1000);
+
+      // FAQ Accordion
+      const faqQuestions = document.querySelectorAll('.faq-question');
+      faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+          const answer = question.nextElementSibling;
+          const icon = question.querySelector('i');
+          
+          answer.classList.toggle('active');
+          icon.classList.toggle('rotate');
+          
+          if (answer.style.maxHeight) {
+            answer.style.maxHeight = null;
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+          }
+        });
+      });
+
+      // Floating chat button
+      const chatBtn = document.querySelector('.chat-btn');
+      chatBtn.addEventListener('click', () => {
+        window.open('https://t.me/alita995', '_blank');
+      });
+
+      // Copy Telegram username
+      document.getElementById('copyBtn').addEventListener('click', function() {
+        const username = document.getElementById('telegramUsername').textContent;
+        navigator.clipboard.writeText(username).then(() => {
+          const copyMessage = document.getElementById('copyMessage');
+          copyMessage.textContent = 'Copied!';
+          setTimeout(() => {
+            copyMessage.textContent = '';
+          }, 2000);
+        });
+      });
+
+      // Register button click tracking
+      const registerBtn = document.getElementById('registerBtn');
+      registerBtn.addEventListener('click', () => {
+        // You can add analytics tracking here
+        console.log('Register button clicked');
+      });
+    });
+  </script>
+</body>
+</html>
